@@ -41,15 +41,14 @@
     </target>
 
     <target name="cleanup">
-        <delete dir="vendor/no-such-vendor"/>
-        <delete dir="www"/>
-        <delete file="plaisio-assets.csv"/>
-        <delete file="plaisio-assets.xml"/>
+        <delete dir="vendor/no-such-vendor" quiet="true"/>
+        <delete dir="www" quiet="true"/>
+        <delete file="plaisio-assets.csv" quiet="true"/>
+        <delete file="plaisio-assets.xml" quiet="true"/>
     </target>
 
     <!-- Runs all unit tests -->
-    <target name="unit">
-        <phing phingfile="build.xml" target="cleanup" haltonfailure="true"/>
+    <target name="unit" depends="cleanup">
         <copy todir="vendor/no-such-vendor" includeemptydirs="true" verbose="false" preservelastmodified="true">
             <fileset dir="test/Command/no-such-vendor/">
                 <include name="**"/>
