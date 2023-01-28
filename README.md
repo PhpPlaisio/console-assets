@@ -26,7 +26,7 @@
 <a href="https://codecov.io/gh/PhpPlaisio/console-assets"><img src="https://codecov.io/gh/PhpPlaisio/console-assets/branch/master/graph/badge.svg" alt="Code Coverage"/></a>
 </td>
 <td>
-<a href="https://scrutinizer-ci.com/g/PhpPlaisio/console-asssets/?branch=master"><img src="https://scrutinizer-ci.com/g/PhpPlaisio/console-assets/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"/></a>
+<a href="https://scrutinizer-ci.com/g/PhpPlaisio/console-assets/?branch=master"><img src="https://scrutinizer-ci.com/g/PhpPlaisio/console-assets/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"/></a>
 </td>
 </tr>
 </tbody>
