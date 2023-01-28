@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Plaisio\Console\Helper\Fileset;
 
-use Plaisio\Console\Helper\ConfigException;
+use Plaisio\Console\Exception\ConfigException;
 
 /**
  * Parses the XML definition of a fileset.
@@ -73,8 +73,6 @@ class FilesetXmlParser
    * Parses the XML definition of fileset.
    *
    * @return array
-   *
-   * @throws ConfigException
    */
   public function parse(): array
   {
@@ -92,8 +90,6 @@ class FilesetXmlParser
    *
    * @param \DOMNode $node  The child node.
    * @param array    $array The includes or exclude array.
-   *
-   * @throws ConfigException
    */
   private function parsePatternNodeAttributes(\DOMNode $node, array &$array): void
   {
@@ -114,8 +110,6 @@ class FilesetXmlParser
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Parses the child nodes of the fileset.
-   *
-   * @throws ConfigException
    */
   private function parseChildNodes(): void
   {

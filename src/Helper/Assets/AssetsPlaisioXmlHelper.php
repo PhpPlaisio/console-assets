@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Plaisio\Console\Helper\Assets;
 
-use Plaisio\Console\Helper\ConfigException;
+use Plaisio\Console\Exception\ConfigException;
 use Plaisio\Console\Helper\Fileset\Fileset;
 use Plaisio\Console\Helper\Fileset\FilesetXmlParser;
 use SetBased\Exception\RuntimeException;
@@ -64,8 +64,6 @@ class AssetsPlaisioXmlHelper
    * @param string $type The asset type.
    *
    * @return string
-   *
-   * @throws ConfigException
    */
   public function queryAssetDir(string $type): string
   {
@@ -86,8 +84,6 @@ class AssetsPlaisioXmlHelper
    * Returns the asset file lists.
    *
    * @return array
-   *
-   * @throws ConfigException
    */
   public function queryAssetFileList(): array
   {
@@ -117,8 +113,6 @@ class AssetsPlaisioXmlHelper
    * Returns the root asset directory (a.k.a. resource directory).
    *
    * @return string
-   *
-   * @throws ConfigException
    */
   public function queryAssetsRootDir(): string
   {
@@ -137,8 +131,6 @@ class AssetsPlaisioXmlHelper
    * Returns the asset file lists.
    *
    * @return array
-   *
-   * @throws ConfigException
    */
   public function queryOtherAssetFileList(): array
   {
@@ -170,8 +162,6 @@ class AssetsPlaisioXmlHelper
    * @param \DOMNode $node The child node.
    *
    * @return array The attributes of the asset node.
-   *
-   * @throws ConfigException
    */
   private function parseAssetNodeAttributes(\DOMNode $node): array
   {
@@ -219,8 +209,6 @@ class AssetsPlaisioXmlHelper
    * @param \DOMNode $item The node with file set.
    *
    * @return array
-   *
-   * @throws ConfigException
    */
   private function queryFileListHelper(string $type, \DOMNode $item): array
   {

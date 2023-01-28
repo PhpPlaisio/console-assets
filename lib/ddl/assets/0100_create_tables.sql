@@ -16,4 +16,4 @@ create table PLS_CURRENT
   cur_path     varchar not null  -- The relative path of the asset.
 );
 
-create unique index idx_pls_current_01 on PLS_CURRENT(cur_type, cur_base_dir, cur_to_dir, cur_path);
+create unique index idx_pls_current_01 on PLS_CURRENT(cur_type, cur_base_dir, cur_path, cur_to_dir);

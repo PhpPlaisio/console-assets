@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Plaisio\Console\Helper\Fileset\FilesetXmlParser;
 
 /**
- *
+ * Testcases for class FilesetXmlParser.
  */
 class FilesetXmlParserTest extends TestCase
 {

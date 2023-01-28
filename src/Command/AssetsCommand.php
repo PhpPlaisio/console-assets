@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Plaisio\Console\Command;
 
+use Plaisio\Console\Exception\ConfigException;
 use Plaisio\Console\Helper\Assets\AssetsPlaisioXmlHelper;
 use Plaisio\Console\Helper\Assets\AssetsStore;
-use Plaisio\Console\Helper\ConfigException;
 use Plaisio\Console\Helper\PlaisioXmlUtility;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -223,8 +223,6 @@ class AssetsCommand extends PlaisioCommand
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Finds all assets all packages (using plaisio-assets.xml files).
-   *
-   * @throws ConfigException
    */
   private function findAssets(): void
   {

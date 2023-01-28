@@ -24,10 +24,10 @@ class AssetsStore extends SqlitePdoDataLayer
     $replace = [':p_cur_type' => $this->quoteVarchar($pCurType), ':p_cur_base_dir' => $this->quoteVarchar($pCurBaseDir), ':p_cur_to_dir' => $this->quoteVarchar($pCurToDir), ':p_cur_path' => $this->quoteVarchar($pCurPath)];
     $query   = <<< EOT
 delete from PLS_CURRENT
-where cur_type     = :p_cur_type
-and   cur_base_dir = :p_cur_base_dir
-and   cur_to_dir   = :p_cur_to_dir
-and   cur_path     = :p_cur_path
+where cur_type               = :p_cur_type
+and   cur_base_dir           = :p_cur_base_dir
+and   ifnull(cur_to_dir, '') = ifnull(:p_cur_to_dir, '')
+and   cur_path               = :p_cur_path
 EOT;
     $query = str_repeat(PHP_EOL, 10).$query;
 

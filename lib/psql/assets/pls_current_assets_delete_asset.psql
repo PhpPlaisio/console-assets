@@ -9,7 +9,7 @@
  * @type none
  */
 delete from PLS_CURRENT
-where cur_type     = :p_cur_type
-and   cur_base_dir = :p_cur_base_dir
-and   cur_to_dir   = :p_cur_to_dir
-and   cur_path     = :p_cur_path
+where cur_type               = :p_cur_type
+and   cur_base_dir           = :p_cur_base_dir
+and   ifnull(cur_to_dir, '') = ifnull(:p_cur_to_dir, '')
+and   cur_path               = :p_cur_path

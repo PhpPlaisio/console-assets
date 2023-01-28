@@ -40,12 +40,30 @@
         </exec>
     </target>
 
-    <!-- Runs all unit tests -->
-    <target name="unit">
-        <exec executable="bin/phpunit" passthru="true" checkreturn="true"/>
+    <target name="cleanup">
+        <delete dir="vendor/no-such-vendor"/>
+        <delete dir="www"/>
+        <delete file="plaisio-assets.csv"/>
+        <delete file="plaisio-assets.xml"/>
     </target>
 
-    <target name="build" depends="update,unit">
-        <echo message=""/>
+    <!-- Runs all unit tests -->
+    <target name="unit">
+        <phing phingfile="build.xml" target="cleanup" haltonfailure="true"/>
+        <copy todir="vendor/no-such-vendor" includeemptydirs="true" verbose="false" preservelastmodified="true">
+            <fileset dir="test/Command/no-such-vendor/">
+                <include name="**"/>
+            </fileset>
+        </copy>
+        <copy todir=".">
+            <fileset dir="test/Command/">
+                <include name="plaisio-assets.xml"/>
+            </fileset>
+        </copy>
+        <mkdir dir="www"/>
+        <exec executable="bin/phpunit" passthru="true" checkreturn="true"/>
+        <phing phingfile="build.xml" target="cleanup" haltonfailure="true"/>
     </target>
+
+    <target name="build" depends="update,unit"/>
 </project>
