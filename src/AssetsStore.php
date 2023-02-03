@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Plaisio\Console\Helper\Assets;
+namespace Plaisio\Console\Assets;
 
 use SetBased\Stratum\SqlitePdo\SqlitePdoDataLayer;
 

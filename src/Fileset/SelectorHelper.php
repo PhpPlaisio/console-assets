@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Plaisio\Console\Helper\Fileset;
+namespace Plaisio\Console\Assets\Fileset;
 
 /**
  * Utility class for selecting/filtering paths against patterns.

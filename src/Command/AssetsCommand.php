@@ -1,12 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Plaisio\Console\Command;
+namespace Plaisio\Console\Assets\Command;
 
+use Plaisio\Console\Assets\AssetsStore;
+use Plaisio\Console\Assets\Helper\PlaisioXmlQueryHelper;
+use Plaisio\Console\Command\PlaisioCommand;
 use Plaisio\Console\Exception\ConfigException;
-use Plaisio\Console\Helper\Assets\AssetsPlaisioXmlHelper;
-use Plaisio\Console\Helper\Assets\AssetsStore;
-use Plaisio\Console\Helper\PlaisioXmlUtility;
+use Plaisio\Console\Helper\PlaisioXmlPathHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Path;
@@ -227,18 +228,18 @@ class AssetsCommand extends PlaisioCommand
   private function findAssets(): void
   {
     // Assets supplied by packages.
-    $plaisioXmlList = PlaisioXmlUtility::findPlaisioXmlPackages('assets');
+    $plaisioXmlList = PlaisioXmlPathHelper::findPlaisioXmlPackages('assets');
     $collections    = [];
     foreach ($plaisioXmlList as $plaisioConfigPath)
     {
-      $helper      = new AssetsPlaisioXmlHelper($plaisioConfigPath);
+      $helper      = new PlaisioXmlQueryHelper($plaisioConfigPath);
       $tmp         = $helper->queryAssetFileList();
       $collections = array_merge($collections, $tmp);
     }
 
     // Third party assets.
-    $plaisioConfigPath = PlaisioXmlUtility::plaisioXmlPath('assets');
-    $helper            = new AssetsPlaisioXmlHelper($plaisioConfigPath);
+    $plaisioConfigPath = PlaisioXmlPathHelper::plaisioXmlPath('assets');
+    $helper            = new PlaisioXmlQueryHelper($plaisioConfigPath);
     $tmp               = $helper->queryOtherAssetFileList();
     $collections       = array_merge($collections, $tmp);
 
@@ -263,7 +264,7 @@ class AssetsCommand extends PlaisioCommand
    */
   private function readCurrentAssets(): void
   {
-    $path = PlaisioXmlUtility::plaisioXmlPath('assets');
+    $path = PlaisioXmlPathHelper::plaisioXmlPath('assets');
     $path = Path::changeExtension($path, 'csv');
     if (file_exists($path))
     {
@@ -286,8 +287,8 @@ class AssetsCommand extends PlaisioCommand
    */
   private function readResourceDir(): void
   {
-    $path               = PlaisioXmlUtility::plaisioXmlPath('assets');
-    $helper             = new AssetsPlaisioXmlHelper($path);
+    $path               = PlaisioXmlPathHelper::plaisioXmlPath('assets');
+    $helper             = new PlaisioXmlQueryHelper($path);
     $this->rootAssetDir = $helper->queryAssetsRootDir();
 
     if (!file_exists($this->rootAssetDir))
@@ -302,7 +303,7 @@ class AssetsCommand extends PlaisioCommand
    */
   private function writeCurrentAssets(): void
   {
-    $path  = PlaisioXmlUtility::plaisioXmlPath('assets');
+    $path  = PlaisioXmlPathHelper::plaisioXmlPath('assets');
     $path1 = Path::changeExtension($path, 'tmp');
     $path2 = Path::changeExtension($path, 'csv');
 

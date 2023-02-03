@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Plaisio\Console\Test\Helper\FileSet;
+namespace Plaisio\Console\Assets\Test\FileSet;
 
 use PHPUnit\Framework\TestCase;
-use Plaisio\Console\Helper\Fileset\FilesetXmlParser;
+use Plaisio\Console\Assets\Fileset\FilesetXmlParser;
 
 /**
  * Testcases for class FilesetXmlParser.

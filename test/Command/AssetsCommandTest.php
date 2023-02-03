@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Plaisio\Console\Test\Command;
+namespace Plaisio\Console\Assets\Test\Command;
 
 use PHPUnit\Framework\TestCase;
 use Plaisio\Console\Application\PlaisioApplication;

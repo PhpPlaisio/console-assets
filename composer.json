@@ -22,16 +22,16 @@
   "prefer-stable": true,
   "require-dev": {
     "phing/phing": "^3.0.0-RC4",
-    "phpunit/phpunit": "^9.5.10"
+    "phpunit/phpunit": "^9.6.1"
   },
   "autoload": {
     "psr-4": {
-      "Plaisio\\Console\\": "src/"
+      "Plaisio\\Console\\Assets\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Plaisio\\Console\\Test\\": "test/"
+      "Plaisio\\Console\\Assets\\Test\\": "test/"
     }
   },
   "config": {

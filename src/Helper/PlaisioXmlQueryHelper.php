@@ -1,18 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace Plaisio\Console\Helper\Assets;
+namespace Plaisio\Console\Assets\Helper;
 
+use Plaisio\Console\Assets\Fileset\Fileset;
+use Plaisio\Console\Assets\Fileset\FilesetXmlParser;
 use Plaisio\Console\Exception\ConfigException;
-use Plaisio\Console\Helper\Fileset\Fileset;
-use Plaisio\Console\Helper\Fileset\FilesetXmlParser;
-use SetBased\Exception\RuntimeException;
 use Symfony\Component\Filesystem\Path;
 
 /**
  * Helper class for retrieving information from plaisio-assets.xml files.
  */
-class AssetsPlaisioXmlHelper
+class PlaisioXmlQueryHelper extends \Plaisio\Console\Helper\PlaisioXmlQueryHelper
 {
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -21,41 +20,6 @@ class AssetsPlaisioXmlHelper
    * @var string[]
    */
   private array $assetTypes = ['css', 'images', 'js'];
-
-  /**
-   * The path to the plaisio.xml file.
-   *
-   * @var string
-   */
-  private string $path;
-
-  /**
-   * The XML of the plaisio.xml.
-   *
-   * @var \DOMDocument
-   */
-  private \DOMDocument $xml;
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * PlaisioXmlHelper constructor.
-   *
-   * @param string $path Path to the PhpPlaisio configuration file.
-   */
-  public function __construct(string $path)
-  {
-    $this->path = $path;
-
-    try
-    {
-      $this->xml = new \DOMDocument();
-      $this->xml->load($this->path, LIBXML_NOWARNING);
-    }
-    catch (\Throwable $exception)
-    {
-      throw new RuntimeException([$exception], 'Failed to read Plaisio config %s', $this->path);
-    }
-  }
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
