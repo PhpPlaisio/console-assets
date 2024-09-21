@@ -4,11 +4,11 @@
  * @type rows
  */
 select cur_type
-,      cur_base_dir
-,      cur_to_dir
-,      cur_path
-from   PLS_CURRENT
+     , cur_base_dir
+     , cur_to_dir
+     , cur_path
+from PLS_CURRENT
 order by cur_type
-,        cur_base_dir
-,        cur_to_dir
-,        cur_path
+       , cur_base_dir
+       , cur_to_dir
+       , cur_path

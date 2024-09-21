@@ -32,7 +32,8 @@ class PlaisioXmlQueryHelper extends \Plaisio\Console\Helper\PlaisioXmlQueryHelpe
   public function queryAssetDir(string $type): string
   {
     $xpath = new \DOMXpath($this->xml);
-    $root  = $xpath->query('/assets/root')->item(0);
+    $root  = $xpath->query('/assets/root')
+                   ->item(0);
     if ($root===null)
     {
       throw new ConfigException('Root asset directory (/assets/root) not defined in %s', $this->path);
@@ -81,7 +82,8 @@ class PlaisioXmlQueryHelper extends \Plaisio\Console\Helper\PlaisioXmlQueryHelpe
   public function queryAssetsRootDir(): string
   {
     $xpath = new \DOMXpath($this->xml);
-    $node  = $xpath->query('/assets/root')->item(0);
+    $node  = $xpath->query('/assets/root')
+                   ->item(0);
     if ($node===null)
     {
       throw new ConfigException('Root asset directory not defined in %s', $this->path);

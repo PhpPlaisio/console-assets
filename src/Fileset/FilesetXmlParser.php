@@ -86,29 +86,6 @@ class FilesetXmlParser
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Parses the attributes of an included or excluded child node of the fileset.
-   *
-   * @param \DOMNode $node  The child node.
-   * @param array    $array The includes or exclude array.
-   */
-  private function parsePatternNodeAttributes(\DOMNode $node, array &$array): void
-  {
-    foreach ($node->attributes as $name => $value)
-    {
-      switch ($name)
-      {
-        case 'name':
-          $array[] = $value->value;
-          break;
-
-        default:
-          throw new ConfigException("Unexpected attribute '%s' at %s:%s'", $name, $this->path, $node->getLineNo());
-      }
-    }
-  }
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
    * Parses the child nodes of the fileset.
    */
   private function parseChildNodes(): void
@@ -160,13 +137,39 @@ class FilesetXmlParser
           break;
 
         default:
-          throw new ConfigException("Unexpected attribute '%s' at %s:%s'", $name, $this->path, $this->node->getLineNo());
+          throw new ConfigException("Unexpected attribute '%s' at %s:%s'",
+                                    $name,
+                                    $this->path,
+                                    $this->node->getLineNo());
       }
     }
 
     if ($this->dir===null)
     {
       throw new ConfigException("Mandatory attribute 'dir' not set %s:%s'", $this->path, $this->node->getLineNo());
+    }
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Parses the attributes of an included or excluded child node of the fileset.
+   *
+   * @param \DOMNode $node  The child node.
+   * @param array    $array The includes or exclude array.
+   */
+  private function parsePatternNodeAttributes(\DOMNode $node, array &$array): void
+  {
+    foreach ($node->attributes as $name => $value)
+    {
+      switch ($name)
+      {
+        case 'name':
+          $array[] = $value->value;
+          break;
+
+        default:
+          throw new ConfigException("Unexpected attribute '%s' at %s:%s'", $name, $this->path, $node->getLineNo());
+      }
     }
   }
 
