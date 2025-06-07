@@ -43,7 +43,7 @@ class AssetsCommand extends PlaisioCommand
   /**
    * @inheritdoc
    */
-  protected function configure()
+  protected function configure(): void
   {
     $this->setName('plaisio:assets')
          ->setDescription('Copy web assets from packages to the asset (a.k.a. resource) directory');
@@ -269,7 +269,7 @@ class AssetsCommand extends PlaisioCommand
     if (file_exists($path))
     {
       $handle = fopen($path, 'r');
-      while (($data = fgetcsv($handle))!==false)
+      while (($data = fgetcsv($handle, escape: ''))!==false)
       {
         $this->store->insertRow('PLS_CURRENT', ['cur_id'       => null,
                                                 'cur_type'     => $data[0],
@@ -311,7 +311,9 @@ class AssetsCommand extends PlaisioCommand
     $handle = fopen($path1, 'w');
     foreach ($assets as $asset)
     {
-      fputcsv($handle, [$asset['cur_type'], $asset['cur_base_dir'], $asset['cur_to_dir'], $asset['cur_path']]);
+      fputcsv(  $handle,
+                [$asset['cur_type'], $asset['cur_base_dir'], $asset['cur_to_dir'], $asset['cur_path']],
+        escape: '');
     }
 
     $new = file_get_contents($path1);
