@@ -11,7 +11,7 @@
     "php": ">=8.3",
     "ext-dom": "*",
     "ext-libxml": "*",
-    "plaisio/console": "^3.1.1",
+    "plaisio/console": "^3.2.0",
     "setbased/exception": "^2.6.0",
     "setbased/php-stratum": "^6.5.0",
     "setbased/php-stratum-sqlite-pdo": "^2.1.0",
